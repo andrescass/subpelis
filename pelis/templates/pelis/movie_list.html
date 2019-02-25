@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Películas</h1>
+
+    {% if movie_list %}
+    <ul>
+
+      {% for movie in movie_list %}
+      <li>
+        <a href="{{ movie.get_absolute_url }}">{{ movie.display_movie}} - {{ movie.post_user}}
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no books in the library.</p>
+    {% endif %}
+{% endblock %}

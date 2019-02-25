@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <div class="text-center">
+    <h1>{{ movie.title }}</h1>
+    <img src="{{movie.image_url}}" class="img-thumbnail">
+  </div>
+
+  <p>posted by <b>{{ movie.post_user }}</b> <i>{{ movie.post_date }}</i></p>
+
+  <p><strong>Director:</strong> {{ movie.director }} - ({{ movie.year_of_edit }}) - {{ movie.movie_country }} </p>
+
+  <p>{% if movie.in_netflix %}<strong> Está en Netflix </strong>- {%endif%}Puntaje: {{ movie.rating }} </p>
+
+  <p>{{ movie.description }}</p>
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h5>Comentarios</h5>
+
+    {% for comm in movie.comment_set.all %}
+      <hr>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <p class="card-title"><strong>{{ comm.comment_user }}</strong> <i>{{ comm.comment_date }}</i></p>
+          <p class="card-text">{{ comm.content }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

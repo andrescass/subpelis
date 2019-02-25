@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  {% block title %}<title>Películas del Subsuelo</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+  <!--div class="container-fluid"-->
+
+    <!--div class="row"-->
+      <!--div class="col-sm-2"-->
+      {% block sidebar %}
+      <!--ul class="sidebar-nav"-->
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div id="navbar" class="collapse navbar-collapse"-->
+            <ul class="navbar-nav">
+              <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+              <li class="nav-item active"><a class="nav-link" href="{% url 'movies' %}">Películas</a></li>
+              {% if user.is_authenticated %}
+                <!--li>User: {{ user.get_username }}</li-->
+                <li class="nav-item active"><a class="nav-link" href="{% url 'new-movie' %}">Nueva Película</a></li>
+                <li class="nav-item active"><a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+              {% else %}
+                <li class="nav-item active"><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--/ul-->
+     {% endblock %}
+      <!--/div-->
+      <div class="jumbotron">
+        <div class="container">
+
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    <!--/div-->
+
+  </div>
+</body>
+</html>

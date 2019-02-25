@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <h2>Nueva película</h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        {{ form.title|as_crispy_field }}
+        {{ form.director|as_crispy_field }}
+        {{ form.movie_country|as_crispy_field }}
+        <div class="row">
+          <div class="col-2">
+            {{ form.genre|as_crispy_field }}
+          </div>
+          <div class="col-2">
+            {{ form.year_of_edit|as_crispy_field }}
+          </div>
+          <div class="col-2">
+            {{ form.rating|as_crispy_field }}
+          </div>
+          <div class="col-2">
+            {{ form.in_netflix|as_crispy_field }}
+          </div>
+        </div>
+        {{ form.description|as_crispy_field }}
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+
+{% endblock %}
