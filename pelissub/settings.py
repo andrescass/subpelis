@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pelis.apps.PelisConfig',
     'crispy_forms',
+    'tinymce',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

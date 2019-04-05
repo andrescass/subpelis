@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^signup/$', pelis_views.signup, name='signup'),
     url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^tinymce/', include('tinymce.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
