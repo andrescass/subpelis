@@ -27,7 +27,7 @@ class Movie(models.Model):
     description = models.TextField(max_length=2000, null=True, blank=True, help_text="Enter a description, synopsis or whatever of the movie")
     director = models.CharField(max_length=200, null=True, blank=True, help_text="Enter the movie director")
     genre = models.ManyToManyField(Genre, help_text="Select a genre for this movie")
-    rating = models.IntegerField(null=True, blank=True, choices=RATING_CHOICES, help_text="Enter the year when the movie was edited")
+    rating = models.IntegerField(null=True, blank=True, choices=RATING_CHOICES, help_text="Rate the movie")
     post_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     in_netflix = models.BooleanField(help_text="Is the movie in Netflix?")
     movie_country = models.CharField(max_length=200, null=True, blank=True, help_text="Enter the movie country")
