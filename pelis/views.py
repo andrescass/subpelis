@@ -1,19 +1,48 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
+from django.views.generic.edit import FormMixin
 from .models import Movie, Genre, Comment
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import csrf_protect
-from .forms import SignUpForm, NewMovieForm
+from .forms import SignUpForm, NewMovieForm, NewCommentForm
 from django.utils import timezone
+from django.urls import reverse
 
 # Create your views here.
 class MovieListView(generic.ListView):
     model = Movie
     paginate_by = 10
 
-class MovieDetailView(generic.DetailView):
+class MovieDetailView(FormMixin, generic.DetailView):
     model = Movie
+    form_class = NewCommentForm
+
+    def get_success_url(self):
+        return reverse('movie-detail', kwargs={'pk': self.object.id})
+
+    def get_context_data(self, **kwargs):
+        context = super(MovieDetailView, self).get_context_data(**kwargs)
+        context['form'] = NewCommentForm(initial={'post': self.object})
+        return context
+
+    def post(self, request, pk, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        movie = get_object_or_404(Movie, pk=pk)
+        if form.is_valid():
+            return self.form_valid(form, request, movie)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form, request, movie):
+        comment = form.save(commit=False)
+        comment.content = form.cleaned_data.get('content')
+        comment.comment_user = request.user
+        comment.comment_date = timezone.now()
+        comment.movie = movie
+        comment.save()
+        return super(MovieDetailView, self).form_valid(form)
 
 @csrf_protect
 def signup(request):

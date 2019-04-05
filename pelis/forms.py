@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Movie
+from .models import Movie, Comment
 
 
 class SignUpForm(UserCreationForm):
@@ -16,4 +16,12 @@ class SignUpForm(UserCreationForm):
 class NewMovieForm(forms.ModelForm):
     class Meta:
         model = Movie
-        fields = ('title', 'year_of_edit', 'director', 'genre', 'movie_country', 'description', 'in_netflix', 'rating',)
+        fields = ('title', 'year_of_edit', 'director', 'genre', 'movie_country', 'description', 'image_url', 'in_netflix', 'rating',)
+
+class NewCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('content',)
+        labels = {
+            'content': ('New Comment:'),
+        }

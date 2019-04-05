@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 #DEBUG = True
 #DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'pelissubsuelo.pythonanywhere.com']
 
 
 # Application definition
@@ -84,8 +84,11 @@ WSGI_APPLICATION = 'pelissub.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pelissubsuelo$pelisbase',
+        'USER': 'pelissubsuelo',
+        'PASSWORD': 'pelisdata',
+        'HOST': 'pelissubsuelo.mysql.pythonanywhere-services.com',
     }
 }
 
@@ -125,6 +128,10 @@ USE_TZ = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = 'DENY'
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_SSL_REDIRECT = True
+
 
 
 # Static files (CSS, JavaScript, Images)
