@@ -15,7 +15,7 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
 
 class NewMovieForm(forms.ModelForm):
-    description = forms.TextField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+    description = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
     class Meta:
         model = Movie
         fields = ('title', 'year_of_edit', 'director', 'genre', 'movie_country', 'description', 'image_url', 'in_netflix', 'rating',)
