@@ -28,7 +28,7 @@ class NewCommentForm(forms.ModelForm):
             'content': ('New Comment:'),
         }
 
-class UpdateMovieForm(forms.ModelForms):
+class UpdateMovieForm(forms.ModelForm):
     class Meta:
         model = Movie
         fields = ('title', 'year_of_edit', 'director', 'genre', 'movie_country', 'description', 'image_url', 'in_netflix', 'rating',)
