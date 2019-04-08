@@ -72,7 +72,7 @@ def new_movie(request):
         form = NewMovieForm()
     return render(request, 'pelis/new_movie.html', {'form': form})
 
-def update_movie(request):
+def update_movie(request, pk):
     movie_inst = get_object_or_404(Movie, pk = pk)
     if request.method == "POST":
         form = UpdateMovieForm(request.POST, instance=movie_inst)
