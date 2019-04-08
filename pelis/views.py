@@ -5,7 +5,7 @@ from .models import Movie, Genre, Comment
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import csrf_protect
-from .forms import SignUpForm, NewMovieForm, NewCommentForm
+from .forms import SignUpForm, NewMovieForm, NewCommentForm, UpdateMovieForm
 from django.utils import timezone
 from django.urls import reverse
 
@@ -71,3 +71,14 @@ def new_movie(request):
     else:
         form = NewMovieForm()
     return render(request, 'pelis/new_movie.html', {'form': form})
+
+def update_movie(request):
+    movie_inst = get_object_or_404(Movie, pk = pk)
+    if request.method == "POST":
+        form = UpdateMovieForm(request.POST, instance=movie_inst)
+        if form.is_valid():
+            form.save()
+            return redirect('movie-detail', pk=movie.pk)
+    else:
+        form = UpdateMovieForm()
+    return render(request, 'pelis/update_movie.html', {'form': form, 'movie_inst': movie_inst})

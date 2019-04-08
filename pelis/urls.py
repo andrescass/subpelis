@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^movie/(?P<pk>\d+)$', views.MovieDetailView.as_view(), name='movie-detail'),
     url(r'^movies/$', views.MovieListView.as_view(), name='movies'),
     url(r'^newmovie/$', views.new_movie, name='new-movie'),
+    url(r'^movie/(?P<pk>\d+)/edit$', views.update_movie, name='update-movie'),
 ]
