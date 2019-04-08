@@ -80,5 +80,5 @@ def update_movie(request, pk):
             form.save()
             return redirect('movie-detail', pk=movie.pk)
     else:
-        form = UpdateMovieForm()
+        form = UpdateMovieForm(instance=movie_inst)
     return render(request, 'pelis/update_movie.html', {'form': form, 'movie_inst': movie_inst})
