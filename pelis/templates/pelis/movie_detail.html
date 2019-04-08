@@ -6,7 +6,7 @@
     <img src="{{movie.image_url}}" class="img-thumbnail">
   </div>
 
-  <p>posted by <b>{{ movie.post_user }}</b> <i>{{ movie.post_date }}</i> {{ user.username }} {% if user.username == movie.post_user %} <a href="{% url 'update-movie' %}">Edit</a> {% endif %} </p>
+  <p>posted by <b>{{ movie.post_user }}</b> <i>{{ movie.post_date }}</i> {% if user.username == movie.post_user %} <a href="{% url 'update-movie' %}">Edit</a> {% endif %} </p>
 
   <p><strong>Director:</strong> {{ movie.director }} - ({{ movie.year_of_edit }}) - {{ movie.movie_country }} </p>
 
