@@ -33,7 +33,7 @@
 
     {% for comm in movie.comment_set.all %}
       <hr>
-      <div class="card" style="width: 18rem;">
+      <div class="card text-dark" style="width: 18rem;">
         <div class="card-body">
           <p class="card-title"><strong>{{ comm.comment_user }}</strong> <i>{{ comm.comment_date }}</i></p>
           <p class="card-text">{{ comm.content }}</p>
