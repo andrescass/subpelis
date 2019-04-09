@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
+    {% if user.username == movie_inst.post_user %}
     <h2>Editar {{movie_inst.title}}</h2>
 
     <form action="" method="post">
@@ -11,5 +12,11 @@
 
         <button type="submit" class="btn btn-success">Save</button>
     </form>
+
+    {% else %}
+
+    <h3>You're not supose to be here. Go away</h3>
+
+    {% endif %}
 
 {% endblock %}
