@@ -5,7 +5,7 @@
     <h1>{{ movie.title }}</h1>
     <img src="{{movie.image_url}}" class="img-thumbnail">
   </div>
-
+  <div class="bg-light">
   <p>posted by <b>{{ movie.post_user }}</b> <i>{{ movie.post_date }}</i> {% if user.username == movie.post_user.username %} <a href="{% url 'update-movie' pk=movie.pk%}">Edit</a> {% endif %} </p>
 
   <p><strong>Director:</strong> {{ movie.director }} - ({{ movie.year_of_edit }}) - {{ movie.movie_country }} </p>
@@ -13,12 +13,13 @@
   <p>{% if movie.in_netflix %}<strong> Está en Netflix </strong>- {%endif%}Puntaje: {{ movie.rating }} </p>
 
   <p>{{ movie.description }}</p>
+  </div>
 
   <hr>
 
   {% if user.is_authenticated %}
   <div class="container-fluid">
-    <div class="card bg-light">
+    <div class="card">
         <form method="post" >
           {% csrf_token %}
           {{ form.content|as_crispy_field }}
