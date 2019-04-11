@@ -14,7 +14,7 @@
 
   <p>{{ movie.description }}</p>
 
-  <p>{% if movie.movie_url != "" %} <a href="{{ movie.movie.movie_url }}"> Acá hay algo </a> {% endif %} </p>
+  <p>{% if movie.movie_url|length > 5 %} <a href="{{ movie.movie.movie_url }}"> Acá hay algo </a> {% endif %} </p>
   </div>
 
   <hr>
