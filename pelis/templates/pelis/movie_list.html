@@ -11,11 +11,11 @@
 {% block content %}
     <h1>Películas</h1>
       {% if movie_list %}
-      <ul class="bg-light">
+      <ul class="bg-dark">
 
         {% for movie in movie_list %}
         <li>
-          <a href="{{ movie.get_absolute_url }}">{{ movie.display_movie}} - {{ movie.post_user}}
+          <a href="{{ movie.get_absolute_url }}" class="text-secondary">{{ movie.display_movie}} - {{ movie.post_user}}
         </li>
         {% endfor %}
 

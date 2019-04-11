@@ -17,7 +17,7 @@ class SignUpForm(UserCreationForm):
 class NewMovieForm(forms.ModelForm):
     class Meta:
         model = Movie
-        fields = ('title', 'year_of_edit', 'director', 'genre', 'movie_country', 'description', 'image_url', 'in_netflix', 'rating',)
+        fields = ('title', 'year_of_edit', 'director', 'genre', 'movie_country', 'description', 'image_url', 'in_netflix', 'rating', 'movie_url')
         widgets = {
             'description': TinyMCE(attrs={'cols': 80, 'rows': 30}),
         }
@@ -33,4 +33,4 @@ class NewCommentForm(forms.ModelForm):
 class UpdateMovieForm(forms.ModelForm):
     class Meta:
         model = Movie
-        fields = ('title', 'year_of_edit', 'director', 'genre', 'movie_country', 'description', 'image_url', 'in_netflix', 'rating',)
+        fields = ('title', 'year_of_edit', 'director', 'genre', 'movie_country', 'description', 'image_url', 'in_netflix', 'rating', 'movie_url')

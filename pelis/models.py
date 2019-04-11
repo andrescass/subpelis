@@ -34,6 +34,7 @@ class Movie(models.Model):
     post_date = models.DateField(null=True, blank=True)
     image_url = models.CharField(max_length=250, null=True, blank=True, help_text="Enter a movie image link")
     seen_users = models.ManyToManyField(User, related_name='have_seen')
+    movie_url = models.CharField(max_length=250, null=True, blank=True, help_text="If you want, enter a link related or to the movie")
 
     class Meta:
         ordering = ["post_date", "title"]
