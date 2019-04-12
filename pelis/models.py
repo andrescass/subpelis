@@ -24,7 +24,7 @@ class Movie(models.Model):
     RATING_CHOICES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (10, 10),)
     title = models.CharField(max_length=200, help_text="Enter the movie title")
     year_of_edit = models.IntegerField(null=True, blank=True, help_text="Enter the year when the movie was edited")
-    description = models.TextArea(max_length=2000, null=True, blank=True, help_text="Enter a description, synopsis or whatever of the movie")
+    description = models.TextField(max_length=2000, null=True, blank=True, help_text="Enter a description, synopsis or whatever of the movie")
     director = models.CharField(max_length=200, null=True, blank=True, help_text="Enter the movie director")
     genre = models.ManyToManyField(Genre, help_text="Select a genre for this movie")
     rating = models.IntegerField(null=True, blank=True, choices=RATING_CHOICES, help_text="Rate the movie")
