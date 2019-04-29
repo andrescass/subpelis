@@ -12,7 +12,7 @@ from django.urls import reverse
 # Create your views here.
 class MovieListView(generic.ListView):
     model = Movie
-    paginate_by = 10
+    paginate_by = 20
 
 class MovieDetailView(FormMixin, generic.DetailView):
     model = Movie
